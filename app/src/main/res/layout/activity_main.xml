@@ -9,6 +9,23 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Polska Kuchnia Tradycyjna"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:background="#112112"
+            android:textColor="#eeeccc"
+            android:padding="10dp"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -18,7 +35,8 @@
         android:padding="10dp"
         app:defaultNavHost="true"
         app:navGraph="@navigation/navigation"
-        android:layout_weight="1" /> <!-- To sprawia, że fragment zajmuje resztę przestrzeni -->
+        android:layout_weight="1"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/> <!-- To sprawia, że fragment zajmuje resztę przestrzeni -->
 
     <!-- BottomNavigationView zawsze na dole -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

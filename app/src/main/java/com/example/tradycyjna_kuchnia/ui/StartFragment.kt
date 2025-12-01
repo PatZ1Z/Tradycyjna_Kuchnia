@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.example.tradycyjna_kuchnia.R
 import com.example.tradycyjna_kuchnia.databinding.FragmentStartBinding
 
@@ -42,6 +43,19 @@ class StartFragment : Fragment() {
 
         _binding = FragmentStartBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        binding.addCustomer.setOnClickListener {
+
+        }
+
+
+
+
     }
 
     companion object {
