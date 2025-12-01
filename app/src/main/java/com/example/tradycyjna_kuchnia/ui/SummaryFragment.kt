@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.tradycyjna_kuchnia.R
 import com.example.tradycyjna_kuchnia.databinding.FragmentStartBinding
+import com.example.tradycyjna_kuchnia.databinding.FragmentSummaryBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -15,14 +16,15 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [StartFragment.newInstance] factory method to
+ * Use the [SummaryFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class StartFragment : Fragment() {
+class SummaryFragment : Fragment() {
 
-    private var _binding: FragmentStartBinding? = null
+    private var _binding: FragmentSummaryBinding? = null
     private val binding get() = _binding!!
 
+    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -39,8 +41,7 @@ class StartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-        _binding = FragmentStartBinding.inflate(inflater, container, false)
+        _binding = FragmentSummaryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -51,12 +52,12 @@ class StartFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment StartFragment.
+         * @return A new instance of fragment SummaryFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            StartFragment().apply {
+            SummaryFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.tradycyjna_kuchnia.ui.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_menuChoiceFragment"
+            app:destination="@id/menuChoiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuChoiceFragment"
+        android:name="com.example.tradycyjna_kuchnia.ui.MenuChoiceFragment"
+        android:label="fragment_menu_choice"
+        tools:layout="@layout/fragment_menu_choice" >
+        <action
+            android:id="@+id/action_menuChoiceFragment_to_readyMealFragment"
+            app:destination="@id/readyMealFragment" />
+        <action
+            android:id="@+id/action_menuChoiceFragment_to_customMealFragment"
+            app:destination="@id/customMealFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/readyMealFragment"
+        android:name="com.example.tradycyjna_kuchnia.ui.ReadyMealFragment"
+        android:label="fragment_ready_meal"
+        tools:layout="@layout/fragment_ready_meal" >
+        <action
+            android:id="@+id/action_readyMealFragment_to_summaryFragment2"
+            app:destination="@id/summaryFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/customMealFragment"
+        android:name="com.example.tradycyjna_kuchnia.ui.CustomMealFragment"
+        android:label="fragment_custom_meal"
+        tools:layout="@layout/fragment_custom_meal" >
+        <action
+            android:id="@+id/action_customMealFragment_to_summaryFragment2"
+            app:destination="@id/summaryFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/summaryFragment2"
+        android:name="com.example.tradycyjna_kuchnia.ui.SummaryFragment"
+        android:label="fragment_summary"
+        tools:layout="@layout/fragment_summary" />
+</navigation>
