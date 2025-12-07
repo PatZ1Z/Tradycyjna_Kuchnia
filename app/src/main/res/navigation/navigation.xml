@@ -5,50 +5,87 @@
     android:id="@+id/navigation"
     app:startDestination="@id/startFragment">
 
+    <!-- StartFragment -->
     <fragment
         android:id="@+id/startFragment"
         android:name="com.example.tradycyjna_kuchnia.ui.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
+
         <action
             android:id="@+id/action_startFragment_to_menuChoiceFragment"
-            app:destination="@id/menuChoiceFragment" />
+            app:destination="@id/menuChoiceFragment" >
+            <argument
+                android:name="orderId"
+                app:argType="long" />
+        </action>
+
         <action
             android:id="@+id/action_startFragment_to_summaryFragment2"
             app:destination="@id/summaryFragment2" />
     </fragment>
+
+    <!-- MenuChoiceFragment -->
     <fragment
         android:id="@+id/menuChoiceFragment"
         android:name="com.example.tradycyjna_kuchnia.ui.MenuChoiceFragment"
         android:label="fragment_menu_choice"
         tools:layout="@layout/fragment_menu_choice" >
-        <action
-            android:id="@+id/action_menuChoiceFragment_to_readyMealFragment"
-            app:destination="@id/readyMealFragment" />
+
+        <argument
+            android:name="orderId"
+            app:argType="long" />
+
         <action
             android:id="@+id/action_menuChoiceFragment_to_customMealFragment"
-            app:destination="@id/customMealFragment" />
+            app:destination="@id/customMealFragment" >
+            <argument
+                android:name="orderId"
+                app:argType="long" />
+        </action>
+
+        <action
+            android:id="@+id/action_menuChoiceFragment_to_readyMealFragment"
+            app:destination="@id/readyMealFragment" >
+            <argument
+                android:name="orderId"
+                app:argType="long" />
+        </action>
     </fragment>
+
+    <!-- ReadyMealFragment -->
     <fragment
         android:id="@+id/readyMealFragment"
         android:name="com.example.tradycyjna_kuchnia.ui.ReadyMealFragment"
         android:label="fragment_ready_meal"
         tools:layout="@layout/fragment_ready_meal" >
 
+        <argument
+            android:name="orderId"
+            app:argType="long" />
+
         <action
             android:id="@+id/action_readyMealFragment_to_startFragment"
             app:destination="@id/startFragment" />
     </fragment>
+
+    <!-- CustomMealFragment -->
     <fragment
         android:id="@+id/customMealFragment"
         android:name="com.example.tradycyjna_kuchnia.ui.CustomMealFragment"
         android:label="fragment_custom_meal"
         tools:layout="@layout/fragment_custom_meal" >
 
+        <argument
+            android:name="orderId"
+            app:argType="long" />
+
         <action
             android:id="@+id/action_customMealFragment_to_startFragment"
             app:destination="@id/startFragment" />
     </fragment>
+
+    <!-- SummaryFragment -->
     <fragment
         android:id="@+id/summaryFragment2"
         android:name="com.example.tradycyjna_kuchnia.ui.SummaryFragment"

@@ -3,9 +3,7 @@ package com.example.tradycyjna_kuchnia.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
-// Klasa reprezentująca zamówienie
-data class Order(val name: String, val description: String)
+import com.example.tradycyjna_kuchnia.model.Order
 
 class OrderViewModel : ViewModel() {
 
@@ -20,7 +18,7 @@ class OrderViewModel : ViewModel() {
     // Metoda dodająca nowe zamówienie
     fun addOrder(order: Order) {
         val currentOrders = _orders.value ?: emptyList()
-        _orders.value = currentOrders + order  // Dodanie nowego zamówienia do listy
+        _orders.value = currentOrders + order
 
         // Po dodaniu zamówienia zmiana stanu ikony
         _iconState.value = "added"
@@ -30,5 +28,9 @@ class OrderViewModel : ViewModel() {
     fun ordersExist(): Boolean {
         return _orders.value?.isNotEmpty() == true
     }
-}
 
+    // Opcjonalnie: pobranie zamówienia po ID
+    fun getOrderById(id: Long): Order? {
+        return _orders.value?.find { it.ID == id }
+    }
+}

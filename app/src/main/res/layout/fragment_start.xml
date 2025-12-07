@@ -8,12 +8,13 @@
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/addCustomer"
-        android:layout_width="wrap_content"
+    <GridLayout
+        android:id="@+id/customersContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
-        />
+        android:columnCount="4"
+        android:padding="16dp"/>
+
 
 
 </LinearLayout>
