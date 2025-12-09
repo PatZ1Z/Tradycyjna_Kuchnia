@@ -6,36 +6,96 @@
     android:columnCount="2"
     android:padding="8dp">
 
-    <ImageView
+    <!-- Pierogi -->
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:layout_margin="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/pierogi" />
+        android:layout_margin="4dp">
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_columnWeight="1"
-        android:layout_margin="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/rosol" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pierogi" />
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_columnWeight="1"
-        android:layout_margin="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/schabowy" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pierogi – 18,99 zł"
+            android:textSize="16sp"
+            android:padding="4dp"
+            android:gravity="center" />
+    </LinearLayout>
 
-    <ImageView
+    <!-- Rosół -->
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:layout_margin="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bigos" />
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/rosol" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rosół – 12,50 zł"
+            android:textSize="16sp"
+            android:padding="4dp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Schabowy -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/schabowy" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Schabowy – 24,00 zł"
+            android:textSize="16sp"
+            android:padding="4dp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Bigos -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bigos" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bigos – 16,00 zł"
+            android:textSize="16sp"
+            android:padding="4dp"
+            android:gravity="center" />
+    </LinearLayout>
 
 </GridLayout>

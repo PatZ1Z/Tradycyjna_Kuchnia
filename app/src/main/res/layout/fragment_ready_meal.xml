@@ -6,36 +6,218 @@
     android:columnCount="2"
     android:padding="8dp">
 
-    <ImageView
+    <!-- Pierogi -->
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:layout_margin="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/pierogi" />
+        android:layout_margin="4dp">
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_columnWeight="1"
-        android:layout_margin="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/rosol" />
+        <ImageView
+            android:id="@+id/imgPierogi"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pierogi" />
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_columnWeight="1"
-        android:layout_margin="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/schabowy" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pierogi – 18,99 zł"
+            android:textSize="16sp"
+            android:padding="4dp"
+            android:gravity="center" />
+        <LinearLayout
+            android:id="@+id/pierogiQuantityLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
 
-    <ImageView
+            <Button
+                android:id="@+id/btnMinusPierogi"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="-"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/txtPierogiQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:padding="8dp"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnPlusPierogi"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="+"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Rosół -->
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:layout_margin="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bigos" />
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:id="@+id/imgRosol"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/rosol" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rosół – 12,50 zł"
+            android:textSize="16sp"
+            android:padding="4dp"
+            android:gravity="center" />
+        <LinearLayout
+            android:id="@+id/rosolQuantityLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnMinusRosol"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/txtRosolQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:padding="8dp"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnPlusRosol"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="+" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Schabowy -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:id="@+id/imgSchabowy"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/schabowy" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Schabowy – 24,00 zł"
+            android:textSize="16sp"
+            android:padding="4dp"
+            android:gravity="center" />
+        <LinearLayout
+            android:id="@+id/schabowyQuantityLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnMinusSchabowy"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/txtSchabowyQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:padding="8dp"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnPlusSchabowy"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="+" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Bigos -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:id="@+id/imgBigos"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bigos" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bigos – 16,00 zł"
+            android:textSize="16sp"
+            android:padding="4dp"
+            android:gravity="center" />
+        <LinearLayout
+            android:id="@+id/bigosQuantityLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnMinusBigos"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/txtBigosQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:padding="8dp"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnPlusBigos"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="+" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </GridLayout>

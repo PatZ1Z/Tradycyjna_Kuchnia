@@ -3,6 +3,7 @@ package com.example.tradycyjna_kuchnia.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.tradycyjna_kuchnia.model.MealItem
 import com.example.tradycyjna_kuchnia.model.Order
 
 class OrderViewModel : ViewModel() {
@@ -23,6 +24,35 @@ class OrderViewModel : ViewModel() {
         // Po dodaniu zamówienia zmiana stanu ikony
         _iconState.value = "added"
     }
+
+    fun addMealToOrder(orderId: Long, meal: MealItem) {
+        val currentOrders = _orders.value?.toMutableList() ?: return
+
+        val orderIndex = currentOrders.indexOfFirst { it.ID == orderId }
+        if (orderIndex == -1) return
+
+        val order = currentOrders[orderIndex]
+
+        // jeśli potrawa już istnieje — zwiększamy ilość
+        val existingMeal = order.meals.find { it.name == meal.name }
+        if (existingMeal != null) {
+            existingMeal.quantity += meal.quantity
+        } else {
+            order.meals.add(meal)
+        }
+
+        _orders.value = currentOrders
+    }
+
+    fun updateOrders(order: Order) {
+        val current = _orders.value?.toMutableList() ?: return
+        val index = current.indexOfFirst { it.ID == order.ID }
+        if (index != -1) {
+            current[index] = order
+            _orders.value = current
+        }
+    }
+
 
     // Metoda sprawdzająca czy zamówienia istnieją
     fun ordersExist(): Boolean {

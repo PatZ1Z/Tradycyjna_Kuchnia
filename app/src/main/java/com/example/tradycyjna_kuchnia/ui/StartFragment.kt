@@ -63,11 +63,14 @@ class StartFragment : Fragment() {
 
                 if (tagValue == "add") {
                     // 🔹 Tworzymy nowe zamówienie
+                    val nextId = (orderViewModel.orders.value?.size ?: 0) + 1
+
                     val newOrder = Order(
-                        ID = System.currentTimeMillis(),  // unikalne ID
-                        name = "Zamówienie ${System.currentTimeMillis()}",
+                        ID = nextId.toLong(),
+                        name = "Zamówienie $nextId",
                         description = "Opis zamówienia"
                     )
+
                     orderViewModel.addOrder(newOrder)
 
                     // 🔹 Zmieniamy ikonę i tag na ID zamówienia
