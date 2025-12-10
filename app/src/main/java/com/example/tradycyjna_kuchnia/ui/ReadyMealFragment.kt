@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.tradycyjna_kuchnia.databinding.FragmentReadyMealBinding
 import com.example.tradycyjna_kuchnia.model.MealItem
@@ -156,6 +157,12 @@ class ReadyMealFragment : Fragment() {
                 }
             }
         }
+
+        binding.btnBackToStart.setOnClickListener {
+            val action = ReadyMealFragmentDirections.actionReadyMealFragmentToStartFragment()
+            view?.findNavController()?.navigate(action)
+        }
+
 
     }
 

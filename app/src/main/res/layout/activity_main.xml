@@ -11,8 +11,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,9 +20,7 @@
             android:gravity="center"
             android:background="#112112"
             android:textColor="#eeeccc"
-            android:padding="10dp"
-            />
-
+            android:padding="10dp"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView
@@ -36,7 +33,18 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/navigation"
         android:layout_weight="1"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/> <!-- To sprawia, że fragment zajmuje resztę przestrzeni -->
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <!-- Fragment do TotalBar, który będzie zawsze widoczny -->
+    <FrameLayout
+        android:id="@+id/totalBarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="bottom">
+
+        <!-- TotalBarFragment będzie umieszczony w tym kontenerze -->
+    </FrameLayout>
 
     <!-- BottomNavigationView zawsze na dole -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -44,6 +52,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:menu="@menu/bottom_navbar" />
-
+        app:menu="@menu/bottom_navbar"/>
 </LinearLayout>

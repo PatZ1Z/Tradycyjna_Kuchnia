@@ -1,14 +1,15 @@
 package com.example.tradycyjna_kuchnia
 
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.tradycyjna_kuchnia.databinding.ActivityMainBinding
+import com.example.tradycyjna_kuchnia.ui.TotalBarFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,18 +22,25 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Inicjalizacja NavHostFragment i NavController
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-
         val navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
 
+        // Ustawienie paddingów na podstawie systemowych pasków
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-
+        // Dodanie TotalBarFragment do kontenera (jeśli nie zostało już dodane)
+        if (savedInstanceState == null) {
+            val totalBarFragment = TotalBarFragment() // Stwórz instancję fragmentu
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.totalBarContainer, totalBarFragment) // Podstaw fragment do kontenera
+                .commit()
+        }
     }
 }

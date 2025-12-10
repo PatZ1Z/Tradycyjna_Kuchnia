@@ -217,6 +217,14 @@
                 android:layout_height="40dp"
                 android:text="+" />
         </LinearLayout>
+        <Button
+            android:id="@+id/btnBackToStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back to Start"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"
+            android:gravity="center"/>
 
     </LinearLayout>
 
