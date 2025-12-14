@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/startRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.StartFragment"
-    android:orientation="vertical">
+    tools:context=".ui.StartFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <GridLayout
-        android:id="@+id/customersContainer"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="4"
-        android:padding="16dp"/>
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <!-- Przycisk podsumowania będzie dodawany dynamicznie z kodu -->
 
-
-</LinearLayout>
+        <!-- Kontener dla zamówień -->
+        <GridLayout
+            android:id="@+id/customersContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:padding="8dp"
+            android:orientation="horizontal"/>
+    </LinearLayout>
+</ScrollView>

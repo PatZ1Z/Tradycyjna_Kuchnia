@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SummaryFragment"
-    android:orientation="vertical">
+    tools:context=".ui.SummaryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/summaryContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Summary fragment"
-        android:textSize="40sp"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</LinearLayout>
+        <!-- Tytuł -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Podsumowanie zamówień"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:paddingBottom="16dp" />
+
+        <!-- Tutaj programowo dodawane będą zamówienia i posiłki -->
+        <!-- Każde zamówienie można wrzucić do CardView lub LinearLayout z background -->
+
+    </LinearLayout>
+</ScrollView>

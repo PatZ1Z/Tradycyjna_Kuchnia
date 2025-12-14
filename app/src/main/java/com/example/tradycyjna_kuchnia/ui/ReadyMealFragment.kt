@@ -1,16 +1,18 @@
 package com.example.tradycyjna_kuchnia.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.tradycyjna_kuchnia.databinding.FragmentReadyMealBinding
 import com.example.tradycyjna_kuchnia.model.MealItem
+import com.example.tradycyjna_kuchnia.R
 
 class ReadyMealFragment : Fragment() {
 
@@ -29,141 +31,74 @@ class ReadyMealFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val orderId = args.orderId
-
         val viewModel = ViewModelProvider(requireActivity())[OrderViewModel::class.java]
 
-        binding.imgPierogi.setOnClickListener {
-            val mealName = "Pierogi"
-            val mealPrice = 15.00
+        fun setupMeal(
+            imageViewId: Int,
+            quantityLayoutId: Int,
+            quantityTextId: Int,
+            btnPlusId: Int,
+            btnMinusId: Int,
+            mealName: String,
+            mealPrice: Double
+        ) {
+            val img = binding.root.findViewById<View>(imageViewId)
+            val layout = binding.root.findViewById<View>(quantityLayoutId)
+            val txtQuantity = binding.root.findViewById<TextView>(quantityTextId)
+            val btnPlus = binding.root.findViewById<Button>(btnPlusId)
+            val btnMinus = binding.root.findViewById<Button>(btnMinusId)
 
-            viewModel.addMealToOrder(orderId, MealItem(mealName, mealPrice, 1))
-            binding.pierogiQuantityLayout.visibility = View.VISIBLE
+            fun updateQuantity() {
+                val meal = viewModel.getOrderById(orderId)?.meals?.find { it.name == mealName }
+                txtQuantity.text = meal?.quantity.toString()
+            }
 
-            val meal = viewModel.getOrderById(orderId)?.meals?.find { it.name == mealName }
-            binding.txtPierogiQuantity.text = meal?.quantity.toString()
-
-            binding.btnPlusPierogi.setOnClickListener {
+            img.setOnClickListener {
                 viewModel.addMealToOrder(orderId, MealItem(mealName, mealPrice, 1))
-                val updated = viewModel.getOrderById(orderId)?.meals?.find { it.name == mealName }
-                binding.txtPierogiQuantity.text = updated?.quantity.toString()
+                layout.visibility = View.VISIBLE
+                updateQuantity()
             }
 
-            binding.btnMinusPierogi.setOnClickListener {
-                val order = viewModel.getOrderById(orderId)
-                val updated = order?.meals?.find { it.name == mealName }
-
-                if (updated != null && updated.quantity > 1) {
-                    updated.quantity--
-                    binding.txtPierogiQuantity.text = updated.quantity.toString()
-                    viewModel.updateOrders(order)
-                }
-            }
-        }
-
-
-        binding.imgRosol.setOnClickListener {
-            val mealName = "Rosół"
-
-            viewModel.addMealToOrder(
-                orderId,
-                MealItem(mealName, 12.50, 1)
-            )
-
-            // pokaż panel zmiany ilości
-            binding.rosolQuantityLayout.visibility = View.VISIBLE
-
-            // pobierz aktualną potrawę z zamówienia
-            val order = viewModel.getOrderById(orderId)
-            val meal = order?.meals?.find { it.name == mealName }
-
-            binding.txtRosolQuantity.text = meal?.quantity.toString()
-
-            // +
-            binding.btnPlusRosol.setOnClickListener {
-                viewModel.addMealToOrder(orderId, MealItem(mealName, 12.50, 1))
-                val updatedMeal = viewModel.getOrderById(orderId)?.meals?.find { it.name == mealName }
-                binding.txtRosolQuantity.text = updatedMeal?.quantity.toString()
-            }
-
-            // –
-            binding.btnMinusRosol.setOnClickListener {
-                val updatedOrder = viewModel.getOrderById(orderId)
-                val updatedMeal = updatedOrder?.meals?.find { it.name == mealName }
-
-                if (updatedMeal != null && updatedMeal.quantity > 1) {
-                    updatedMeal.quantity--
-                    binding.txtRosolQuantity.text = updatedMeal.quantity.toString()
-                    viewModel.updateOrders(updatedOrder)
-                }
-            }
-        }
-
-
-        binding.imgSchabowy.setOnClickListener {
-            val mealName = "Schabowy"
-            val mealPrice = 22.00
-
-            viewModel.addMealToOrder(orderId, MealItem(mealName, mealPrice, 1))
-            binding.schabowyQuantityLayout.visibility = View.VISIBLE
-
-            val meal = viewModel.getOrderById(orderId)?.meals?.find { it.name == mealName }
-            binding.txtSchabowyQuantity.text = meal?.quantity.toString()
-
-            binding.btnPlusSchabowy.setOnClickListener {
+            btnPlus.setOnClickListener {
                 viewModel.addMealToOrder(orderId, MealItem(mealName, mealPrice, 1))
-                val updated = viewModel.getOrderById(orderId)?.meals?.find { it.name == mealName }
-                binding.txtSchabowyQuantity.text = updated?.quantity.toString()
+                updateQuantity()
             }
 
-            binding.btnMinusSchabowy.setOnClickListener {
+            btnMinus.setOnClickListener {
                 val order = viewModel.getOrderById(orderId)
-                val updated = order?.meals?.find { it.name == mealName }
-
-                if (updated != null && updated.quantity > 1) {
-                    updated.quantity--
-                    binding.txtSchabowyQuantity.text = updated.quantity.toString()
+                val meal = order?.meals?.find { it.name == mealName }
+                if (meal != null && meal.quantity > 1) {
+                    meal.quantity--
                     viewModel.updateOrders(order)
+                    updateQuantity()
                 }
             }
         }
 
+        // Zupy
+        setupMeal(R.id.imgRosol, R.id.rosolQuantityLayout, R.id.txtRosolQuantity, R.id.btnPlusRosol, R.id.btnMinusRosol, "Rosół", 12.5)
+        setupMeal(R.id.imgZurek, R.id.zurekQuantityLayout, R.id.txtZurekQuantity, R.id.btnPlusZurek, R.id.btnMinusZurek, "Żurek", 14.0)
+        setupMeal(R.id.imgBarszcz, R.id.barszczQuantityLayout, R.id.txtBarszczQuantity, R.id.btnPlusBarszcz, R.id.btnMinusBarszcz, "Barszcz", 10.0)
+        setupMeal(R.id.imgOgorkowa, R.id.ogorkowaQuantityLayout, R.id.txtOgorkowaQuantity, R.id.btnPlusOgorkowa, R.id.btnMinusOgorkowa, "Zupa ogórkowa", 11.0)
 
-        binding.imgBigos.setOnClickListener {
-            val mealName = "Bigos"
-            val mealPrice = 14.00
+        // Drugie dania
+        setupMeal(R.id.imgPierogi, R.id.pierogiQuantityLayout, R.id.txtPierogiQuantity, R.id.btnPlusPierogi, R.id.btnMinusPierogi, "Pierogi", 18.99)
+        setupMeal(R.id.imgSchabowy, R.id.schabowyQuantityLayout, R.id.txtSchabowyQuantity, R.id.btnPlusSchabowy, R.id.btnMinusSchabowy, "Schabowy", 24.0)
+        setupMeal(R.id.imgBigos, R.id.bigosQuantityLayout, R.id.txtBigosQuantity, R.id.btnPlusBigos, R.id.btnMinusBigos, "Bigos", 22.0)
+        setupMeal(R.id.imgGolabki, R.id.golabkiQuantityLayout, R.id.txtGolabkiQuantity, R.id.btnPlusGolabki, R.id.btnMinusGolabki, "Gołąbki", 20.0)
 
-            viewModel.addMealToOrder(orderId, MealItem(mealName, mealPrice, 1))
-            binding.bigosQuantityLayout.visibility = View.VISIBLE
+        // Napoje
+        setupMeal(R.id.imgKawa, R.id.kawaQuantityLayout, R.id.txtKawaQuantity, R.id.btnPlusKawa, R.id.btnMinusKawa, "Kawa", 8.0)
+        setupMeal(R.id.imgHerbata, R.id.herbataQuantityLayout, R.id.txtHerbataQuantity, R.id.btnPlusHerbata, R.id.btnMinusHerbata, "Herbata", 7.0)
+        setupMeal(R.id.imgWoda, R.id.wodaQuantityLayout, R.id.txtWodaQuantity, R.id.btnPlusWoda, R.id.btnMinusWoda, "Woda", 5.0)
+        setupMeal(R.id.imgCola, R.id.colaQuantityLayout, R.id.txtColaQuantity, R.id.btnPlusCola, R.id.btnMinusCola, "Cola", 6.0)
 
-            val meal = viewModel.getOrderById(orderId)?.meals?.find { it.name == mealName }
-            binding.txtBigosQuantity.text = meal?.quantity.toString()
-
-            binding.btnPlusBigos.setOnClickListener {
-                viewModel.addMealToOrder(orderId, MealItem(mealName, mealPrice, 1))
-                val updated = viewModel.getOrderById(orderId)?.meals?.find { it.name == mealName }
-                binding.txtBigosQuantity.text = updated?.quantity.toString()
-            }
-
-            binding.btnMinusBigos.setOnClickListener {
-                val order = viewModel.getOrderById(orderId)
-                val updated = order?.meals?.find { it.name == mealName }
-
-                if (updated != null && updated.quantity > 1) {
-                    updated.quantity--
-                    binding.txtBigosQuantity.text = updated.quantity.toString()
-                    viewModel.updateOrders(order)
-                }
-            }
-        }
-
+        // Powrót
         binding.btnBackToStart.setOnClickListener {
             val action = ReadyMealFragmentDirections.actionReadyMealFragmentToStartFragment()
-            view?.findNavController()?.navigate(action)
+            view.findNavController().navigate(action)
         }
-
-
     }
 
     override fun onDestroyView() {

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -18,35 +19,50 @@ class TotalBarFragment : Fragment() {
     private var _binding: FragmentTotalBarBinding? = null
     private val binding get() = _binding!!
 
-    // Uzyskanie dostępu do OrderViewModel
     private val orderViewModel: OrderViewModel by activityViewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentTotalBarBinding.inflate(inflater, container, false)
 
-        // Nasłuchiwanie na zmiany w liście zamówień
-        orderViewModel.orders.observe(viewLifecycleOwner, Observer { orders ->
-            val totalAmount = calculateTotalAmount(orders)
-            // Wyświetlanie sumy do zapłaty w TextView
-            binding.totalText.text = "Total: $totalAmount"
-        })
+        orderViewModel.orders.observe(viewLifecycleOwner) { orders ->
+            showOrdersAndTotal(orders)
+        }
 
         return binding.root
     }
 
-    // Funkcja obliczająca całkowitą kwotę do zapłaty
-    private fun calculateTotalAmount(orders: List<Order>): Double {
-        var total = 0.0
-        // Iteracja przez wszystkie zamówienia i potrawy
-        for (order in orders) {
-            for (meal in order.meals) {
-                total += meal.price * meal.quantity // Cena * ilość
+    private fun showOrdersAndTotal(orders: List<Order>) {
+        binding.ordersContainer.removeAllViews()
+
+        var totalAmount = 0.0
+
+        orders.forEachIndexed { index, order ->
+            val orderTotal = calculateOrderTotal(order)
+            totalAmount += orderTotal
+
+            val orderTextView = TextView(requireContext()).apply {
+                text = "Zamówienie ${index + 1}: %.2f zł".format(orderTotal)
+                textSize = 16f
+                setTextColor(resources.getColor(android.R.color.white))
+                setPadding(0, 4, 0, 4)
             }
+
+            binding.ordersContainer.addView(orderTextView)
         }
-        return total
+
+        binding.totalText.text = "Do zapłaty: %.2f zł".format(totalAmount)
+    }
+
+    private fun calculateOrderTotal(order: Order): Double {
+        var sum = 0.0
+        for (meal in order.meals) {
+            sum += meal.price * meal.quantity
+        }
+        return sum
     }
 
     override fun onDestroyView() {
@@ -54,3 +70,4 @@ class TotalBarFragment : Fragment() {
         _binding = null
     }
 }
+

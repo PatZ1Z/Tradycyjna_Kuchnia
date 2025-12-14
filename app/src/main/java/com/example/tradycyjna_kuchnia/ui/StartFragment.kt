@@ -20,6 +20,8 @@ class StartFragment : Fragment() {
 
     private val orderViewModel: OrderViewModel by activityViewModels()
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

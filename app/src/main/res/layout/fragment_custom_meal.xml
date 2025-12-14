@@ -1,101 +1,944 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:columnCount="2"
-    android:padding="8dp">
+    android:layout_height="match_parent">
 
-    <!-- Pierogi -->
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_margin="4dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/pierogi" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pierogi – 18,99 zł"
-            android:textSize="16sp"
-            android:padding="4dp"
-            android:gravity="center" />
-    </LinearLayout>
-
-    <!-- Rosół -->
-    <LinearLayout
         android:orientation="vertical"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_margin="4dp">
+        android:padding="8dp">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/rosol" />
-
+        <!-- ================= ZUPY ================= -->
         <TextView
+            android:text="Zupy"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Rosół – 12,50 zł"
-            android:textSize="16sp"
-            android:padding="4dp"
-            android:gravity="center" />
-    </LinearLayout>
+            android:layout_height="wrap_content" />
 
-    <!-- Schabowy -->
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_margin="4dp">
-
-        <ImageView
+        <GridLayout
+            android:columnCount="2"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/schabowy" />
+            android:layout_height="wrap_content">
 
+            <!-- Rosół -->
+            <LinearLayout
+                android:id="@+id/rosolLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgRosol"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/rosol"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Rosół – 12,50 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <!-- quantity panel (hidden until click) -->
+                <LinearLayout
+                    android:id="@+id/rosolQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusRosol"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtRosolQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusRosol"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <!-- options (vertical) -->
+                <RadioGroup
+                    android:id="@+id/radioGroupRosol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioRosolOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z makaronem" />
+
+                    <RadioButton
+                        android:id="@+id/radioRosolOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z ziemniakami" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Żurek -->
+            <LinearLayout
+                android:id="@+id/zurekLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgZurek"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/zurek"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Żurek – 14,00 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/zurekQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusZurek"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtZurekQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusZurek"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupZurek"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioZurekOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z kiełbasą" />
+
+                    <RadioButton
+                        android:id="@+id/radioZurekOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bez dodatku" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Barszcz -->
+            <LinearLayout
+                android:id="@+id/barszczLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgBarszcz"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/barszcz"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Barszcz czerwony – 10,00 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/barszczQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusBarszcz"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtBarszczQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusBarszcz"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupBarszcz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioBarszczOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z uszkami" />
+
+                    <RadioButton
+                        android:id="@+id/radioBarszczOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bez dodatków" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Zupa ogórkowa -->
+            <LinearLayout
+                android:id="@+id/ogorkowaLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgOgorkowa"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ogorkowa"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Zupa ogórkowa – 11,00 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/ogorkowaQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusOgorkowa"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtOgorkowaQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusOgorkowa"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupOgorkowa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioOgorkowaOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z ziemniakami" />
+
+                    <RadioButton
+                        android:id="@+id/radioOgorkowaOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z makaronem" />
+                </RadioGroup>
+            </LinearLayout>
+        </GridLayout>
+
+        <!-- ================= DRUGIE DANIA ================= -->
         <TextView
+            android:text="Drugie dania"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Schabowy – 24,00 zł"
-            android:textSize="16sp"
-            android:padding="4dp"
-            android:gravity="center" />
-    </LinearLayout>
+            android:layout_height="wrap_content" />
 
-    <!-- Bigos -->
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_margin="4dp">
-
-        <ImageView
+        <GridLayout
+            android:columnCount="2"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bigos" />
+            android:layout_height="wrap_content">
 
+            <!-- Pierogi ruskie -->
+            <LinearLayout
+                android:id="@+id/pierogiLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgPierogi"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/pierogi"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Pierogi ruskie – 18,99 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/pierogiQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusPierogi"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtPierogiQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusPierogi"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupPierogi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioPierogiOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z cebulką" />
+
+                    <RadioButton
+                        android:id="@+id/radioPierogiOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bez cebulki" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Schabowy -->
+            <LinearLayout
+                android:id="@+id/schabowyLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgSchabowy"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/schabowy"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Schabowy – 24,00 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/schabowyQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusSchabowy"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtSchabowyQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusSchabowy"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupSchabowy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioSchabowyOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z ziemniakami i surówką" />
+
+                    <RadioButton
+                        android:id="@+id/radioSchabowyOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z frytkami" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Bigos -->
+            <LinearLayout
+                android:id="@+id/bigosLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgBigos"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/bigos"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Bigos – 22,00 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/bigosQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusBigos"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtBigosQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusBigos"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupBigos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioBigosOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z chlebem" />
+
+                    <RadioButton
+                        android:id="@+id/radioBigosOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bez dodatku" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Gołąbki -->
+            <LinearLayout
+                android:id="@+id/golabkiLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgGolabki"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/golabki"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Gołąbki – 20,00 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/golabkiQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusGolabki"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtGolabkiQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusGolabki"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupGolabki"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioGolabkiOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z ziemniakami" />
+
+                    <RadioButton
+                        android:id="@+id/radioGolabkiOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z sosem" />
+                </RadioGroup>
+            </LinearLayout>
+        </GridLayout>
+
+        <!-- ================= NAPOJE ================= -->
         <TextView
+            android:text="Napoje"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bigos – 16,00 zł"
-            android:textSize="16sp"
-            android:padding="4dp"
-            android:gravity="center" />
-    </LinearLayout>
+            android:layout_height="wrap_content" />
 
-</GridLayout>
+        <GridLayout
+            android:columnCount="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Kawa -->
+            <LinearLayout
+                android:id="@+id/kawaLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgKawa"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/kawa"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Kawa – 8,00 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/kawaQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusKawa"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtKawaQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusKawa"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupKawa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioKawaOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z mlekiem" />
+
+                    <RadioButton
+                        android:id="@+id/radioKawaOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bez mleka" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Herbata -->
+            <LinearLayout
+                android:id="@+id/herbataLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgHerbata"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/herbata"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Herbata – 7,00 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/herbataQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusHerbata"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtHerbataQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusHerbata"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupHerbata"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioHerbataOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z cytryną" />
+
+                    <RadioButton
+                        android:id="@+id/radioHerbataOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bez dodatków" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Woda -->
+            <LinearLayout
+                android:id="@+id/wodaLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgWoda"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/woda"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Woda – 5,00 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/wodaQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusWoda"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtWodaQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusWoda"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupWoda"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioWodaOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z lodem" />
+
+                    <RadioButton
+                        android:id="@+id/radioWodaOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bez lodu" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Cola -->
+            <LinearLayout
+                android:id="@+id/colaLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgCola"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cola"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:text="Cola – 6,00 zł"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/colaQuantityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnMinusCola"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="-" />
+
+                    <TextView
+                        android:id="@+id/txtColaQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="18sp"
+                        android:padding="8dp" />
+
+                    <Button
+                        android:id="@+id/btnPlusCola"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupCola"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="6dp">
+
+                    <RadioButton
+                        android:id="@+id/radioColaOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Z lodem" />
+
+                    <RadioButton
+                        android:id="@+id/radioColaOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bez lodu" />
+                </RadioGroup>
+            </LinearLayout>
+        </GridLayout>
+
+        <!-- POWRÓT -->
+        <Button
+            android:id="@+id/btnBackToStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back to Start"
+            android:layout_margin="16dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
+</ScrollView>
